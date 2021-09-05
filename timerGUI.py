@@ -156,7 +156,7 @@ class Ui_Dialog(object):
         self.minuteSpinBox.valueChanged.connect(lambda: self.spinBoxClicked(self.minuteSpinBox))
         self.secondSpinBox.valueChanged.connect(lambda: self.spinBoxClicked(self.secondSpinBox))
         self.exitPushButton.clicked.connect(self.exit)
-        self.startPushButton.clicked.connect(lambda: threading.Thread(target=self.startTimer_mainLoop).start())
+        self.startPushButton.clicked.connect(lambda: threading.Thread(target=self.startTimer_mainLoop, daemon=True).start())
         self.stopPushButton.clicked.connect(lambda: self.stopTimer())
         QtCore.QMetaObject.connectSlotsByName(Dialog)
         Dialog.setTabOrder(self.daySpinBox, self.hourSpinBox)
